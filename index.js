@@ -3,20 +3,36 @@
  *
  */
 
-var net = require('net');
 var RPCConnection = require('./lib/RPCConnection');
-
-var rpc = new RPCConnection({ host: '172.16.10.4', port: 9001 });
 
 // CLI
 if (require.main === module) {
-	var functionName = process.argv[2];
-	var args = [].concat(process.argv);
-	args.splice(0, 3);
+	var yargs = require('yargs');
+	var pkg = require('./package.json');
 
-	if (!functionName) {
-		throw new Error('No RPC function name was passed on the CLI.');
-	}
+	var argv = yargs
+		.usage('Call an RPC function registered in uWSGI.\nUsage: $0 [options] function [args...]')
+		.version(pkg.version)
+		.option('h', {
+			alias: 'host',
+			demand: false,
+			describe: 'RPC server host',
+			type: 'string',
+			default: 'localhost'
+		})
+		.option('p', {
+			alias: 'port',
+			demand: true,
+			describe: 'RPC server port',
+			type: 'number'
+		})
+		.require(1, 'No remote function name was specified.')
+		.argv;
+
+	var rpc = new RPCConnection({ host: argv.host, port: argv.port });
+	var functionName = argv._[0];
+	var args = argv._.slice(1);
+
 	rpc.call(functionName, args, function (response) {
 		console.log(response);
 	});

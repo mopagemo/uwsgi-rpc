@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "concat-stream": "^1.4.7"
+    "concat-stream": "^1.4.7",
+    "yargs": "^3.2.1"
   }
 }

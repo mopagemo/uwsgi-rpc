@@ -1,12 +1,12 @@
 {
-  "name": "uwsgi-rpc-client",
+  "name": "uwsgi-rpc",
   "version": "0.1.0",
   "description": "Call registered uWSGI RPC commands via node.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Erik Brännström",
   "license": "MIT",
   "dependencies": {
     "concat-stream": "^1.4.7",

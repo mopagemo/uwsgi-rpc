@@ -8,5 +8,7 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "concat-stream": "^1.4.7"
+  }
 }

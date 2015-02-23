@@ -1,0 +1,12 @@
+{
+  "name": "uwsgi-rpc-client",
+  "version": "0.1.0",
+  "description": "Call registered uWSGI RPC commands via node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}

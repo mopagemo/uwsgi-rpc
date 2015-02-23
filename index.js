@@ -1,11 +1,23 @@
+/**
+ * Module for calling RPC functions registered in uWSGI (http://uwsgi-docs.readthedocs.org/en/latest/RPC.html).
+ *
+ */
+
 var net = require('net');
 var RPCTransform = require('./lib/RPCTransform');
 
 var client = net.connect({ host: '172.16.10.4', port: 9001 });
 
 var call = function (name, args) {
+	if (args.length > 254) {
+		throw new Error('uSWGI has a 254 arguments per function maximum.');
+	}
+
 	var dataSize = (2 + name.length);
 	for (var i = 0; i < args.length; i++) {
+		if (args[i].length > 65535) {
+			throw new Error('Each RPC function argument has a 16 bit size limit (65535 bytes) in uWSGI.');
+		}
 		dataSize += 2 + args[i].length;
 	}
 

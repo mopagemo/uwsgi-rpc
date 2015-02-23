@@ -1,5 +1,5 @@
 /**
- * Module for calling RPC functions registered in uWSGI (http://uwsgi-docs.readthedocs.org/en/latest/RPC.html).
+ * Module for calling RPC functions registered in uWSGI.
  *
  */
 
@@ -29,7 +29,7 @@ if (require.main === module) {
 		.require(1, 'No remote function name was specified.')
 		.argv;
 
-	var rpc = new RPCConnection({ host: argv.host, port: argv.port });
+	var rpc = new RPCConnection(argv.host, argv.port);
 	var functionName = argv._[0];
 	var args = argv._.slice(1);
 

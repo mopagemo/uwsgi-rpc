@@ -1,6 +1,6 @@
 {
   "name": "uwsgi-rpc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Call registered uWSGI RPC commands via node.",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "url": "https://github.com/erikbrannstrom/uwsgi-rpc.git"
   },
   "keywords": [
-      "uwsgi",
-      "rpc"
+    "uwsgi",
+    "rpc"
   ],
   "author": "Erik Brännström",
   "license": "MIT",
